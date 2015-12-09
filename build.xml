@@ -31,7 +31,7 @@
 
 
 	<target name="run-tests" depends="compile">
-		<property name="testparam" value="SeleniumTest" />
+		<property name="testparam" value="" />
 		<echo> Running test class ${testparam}......... </echo>
 		<junit printsummary="yes" haltonfailure="yes" showoutput="yes">
 			<classpath>
@@ -57,7 +57,7 @@
 			<fileset dir="${reports}/raw/">
 				<include name="TEST-*.xml" />
 			</fileset>
-			<report format="noframes" todir="${reports}\html\" />
+			<report format="noframes" todir="${reports}/html/" />
 		</junitreport>
 	</target>
 
