@@ -33,14 +33,14 @@
 	<target name="run-tests" depends="compile">
 		<property name="testparam" value="" />
 		<echo> Running test class ${testparam}......... </echo>
-		<junit printsummary="yes" haltonfailure="yes" showoutput="yes">
+		
+		<junit printsummary="on">
 			<classpath>
 				<pathelement path="${build}" />
 				<fileset dir="lib">
 					<include name="**/*.jar" />
 				</fileset>
 			</classpath>
-
 			<batchtest fork="yes" todir="${reports}/raw/">
 				<formatter type="xml" />
 				<fileset dir="${src}">
@@ -50,8 +50,6 @@
 		</junit>
 	</target>
 
-
-
 	<target name="test" depends="run-tests">
 		<junitreport todir="${reports}">
 			<fileset dir="${reports}/raw/">
@@ -60,7 +58,6 @@
 			<report format="noframes" todir="${reports}/html/" />
 		</junitreport>
 	</target>
-
 
 	<target name="all2" depends="clean, test" />
 
