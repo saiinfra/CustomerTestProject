@@ -7,10 +7,12 @@
 	<property name="reports" location="reports" />
 
 	<target name="init" depends="clean">
-		<!-- <mkdir dir="${build}" />
+		<mkdir dir="${build}" />
 		<mkdir dir="${reports}" />
+		<!--
 		<mkdir dir="${reports}/raw/" />
-		<mkdir dir="${reports}/html/" /> -->
+		<mkdir dir="${reports}/html/" />
+		--> 
 	</target>
 
 	<target name="compile" depends="init">
@@ -24,45 +26,12 @@
 	</target>
 
 	<target name="clean">
-		<!-- <delete dir="build" />
-		<delete dir="${reports}" /> -->
+		<delete dir="build" />
+		<delete dir="${reports}" />
 	</target>
-
-
-
-	<target name="run-tests" depends="compile">
-		<property name="testparam" value="" />
-		<echo> Running test class ${testparam}......... </echo>
-		
-		<junit printsummary="on">
-			<classpath>
-				<pathelement path="${build}" />
-				<fileset dir="lib">
-					<include name="**/*.jar" />
-				</fileset>
-			</classpath>
-			<batchtest fork="yes" todir="${reports}/raw/">
-				<formatter type="xml" />
-				<fileset dir="${src}">
-					<include name="**/${testparam}.java" />
-				</fileset>
-			</batchtest>
-		</junit>
-	</target>
-
-	<target name="test" depends="run-tests">
-		<junitreport todir="${reports}">
-			<fileset dir="${reports}/raw/">
-				<include name="TEST-*.xml" />
-			</fileset>
-			<report format="noframes" todir="${reports}/html/" />
-		</junitreport>
-	</target>
-
-	<target name="all2" depends="clean, test" />
 
 	<target name="all1" depends="compile">
-		<property name="testparam" value="RunSalesForceTestSuite" />
+		<property name="testparam" value="FailureTest" />
 		<echo> Running test class ${testparam}......... </echo>
 
 		<java classname="com.test.TestRunner">
@@ -75,20 +44,4 @@
 			<arg value="${testparam}" />
 		</java>
 	</target>
-
-
-	<target name="all" depends="compile">
-		<property name="testparam" value="" />
-		<echo> Running test class ${testparam}......... </echo>
-		<junit printsummary="on">
-			<classpath refid="classpath.test" />
-			<batchtest fork="yes" todir="${build.dir}">
-				<!-- The fileset element specifies which tests to run. -->
-				<!-- There are many different ways to specify filesets, this is just 
-					one example. -->
-				<fileset dir="${test.dir}" includes="**/${testparam}.java" />
-			</batchtest>
-		</junit>
-	</target>
-
 </project>

@@ -17,7 +17,7 @@ public class SampleAddTest {
 
 	@Test
 	public void testAdd() {
-		Assert.assertEquals(5, add(3,2));
+		Assert.assertEquals(6, add(3,2));
 	}
 
 	@After public void settleDown() { x = 0; }
