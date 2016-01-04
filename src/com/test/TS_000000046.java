@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class TS_000000046.java {
+public class TS_000000046 {
 	private WebDriver driver;
 	private String baseUrl;
 
